@@ -8,6 +8,10 @@
     padding: $space_30 $space_40;
     width: 100%;
 
+    @include mq(){
+        padding: $space_20 $space-10;
+    }
+
     &__share{
         &-button{
             background: #000;
@@ -28,6 +32,10 @@
 
     &__dm{
         margin: 0 $space_default 0 0;
+
+        @include mq(){
+            margin: $space_25 $space_default $space_25 0;
+        }
 
         &-link{
             background: $blue;

@@ -5,6 +5,12 @@
         margin-bottom: 0;
     }
 
+    &__name-link{
+        @include mq(sm){
+            padding: $space-5 $space-10;
+        }
+    }
+
     &__image-item{
         border-radius: 100%;
     }
@@ -13,12 +19,22 @@
         justify-content: flex-start;
         margin-right: 55%;
         width: 45%;
+
+        @include mq(){
+            margin-right: 0;
+            width: 100%;
+        }
     }
 
     &--other{
         justify-content: flex-end;
         margin-left: 55%;
         width: 45%;
+
+        @include mq(){
+            margin-left: 0;
+            width: 100%;
+        }
     }
     
 }

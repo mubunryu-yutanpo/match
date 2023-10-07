@@ -4,7 +4,7 @@
         display: none;
 
         &.is-open{
-            background: #000;
+            background: $purple;
             display: block;
             height: auto;
             left: 0;
@@ -40,6 +40,10 @@
         &:hover{
             color: $pink;
             font-weight: bold;
+        }
+
+        @include mq(lg){
+            padding: $space-10 $space_default;
         }
     }
 
