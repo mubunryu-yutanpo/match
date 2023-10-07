@@ -3143,7 +3143,7 @@ __webpack_require__.r(__webpack_exports__);
     handleScroll: function handleScroll() {
       var scrollPosition = window.scrollY || document.documentElement.scrollTop;
       var headerElement = document.querySelector('.p-header');
-      if (scrollPosition > 300) {
+      if (scrollPosition > 200) {
         // スクロール位置が500pxを超えた場合、クラス名を追加
         headerElement.classList.add('is-bg-change');
       } else {
