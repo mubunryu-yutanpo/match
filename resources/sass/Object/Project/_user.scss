@@ -15,7 +15,7 @@
         border-radius: 100%;
     }
 
-    &--me{
+    &.is-me{
         justify-content: flex-start;
         margin-right: 55%;
         width: 45%;
@@ -26,7 +26,7 @@
         }
     }
 
-    &--other{
+    &.is-other{
         justify-content: flex-end;
         margin-left: 55%;
         width: 45%;

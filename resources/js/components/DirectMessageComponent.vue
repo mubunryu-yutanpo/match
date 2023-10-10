@@ -13,7 +13,7 @@
             <div class="p-message__container" v-for="message in messageList" :key="message.id">
                 
                 <!-- ユーザー -->
-                <div class="p-user c-box--flex" :class="{'p-user--me': 1 === message.sender_id , 'p-user--other': 1 !== message.sender_id}">
+                <div class="p-user c-box--flex" :class="{'is-me': 1 === message.sender_id , 'is-other': 1 !== message.sender_id}">
                     <div class="p-user__image c-box--avatar">
                         <img :src="message.user.avatar" class="p-user__image-item c-image">
                     </div>

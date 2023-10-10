@@ -6054,8 +6054,8 @@ var render = function () {
               {
                 staticClass: "p-user c-box--flex",
                 class: {
-                  "p-user--me": 1 === message.sender_id,
-                  "p-user--other": 1 !== message.sender_id,
+                  "is-me": 1 === message.sender_id,
+                  "is-other": 1 !== message.sender_id,
                 },
               },
               [
@@ -7367,8 +7367,8 @@ var render = function () {
                     {
                       staticClass: "p-user c-box--flex",
                       class: {
-                        "p-user--me": _vm.seller_id === message.user.id,
-                        "p-user--other": _vm.seller_id !== message.user.id,
+                        "is-me": _vm.seller_id === message.user.id,
+                        "is-other": _vm.seller_id !== message.user.id,
                       },
                     },
                     [

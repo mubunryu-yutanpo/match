@@ -1113,27 +1113,27 @@ textarea {
   border-radius: 100%;
 }
 
-.p-user--me {
+.p-user.is-me {
   justify-content: flex-start;
   margin-right: 55%;
   width: 45%;
 }
 
 @media screen and (max-width:767px) {
-  .p-user--me {
+  .p-user.is-me {
     margin-right: 0;
     width: 100%;
   }
 }
 
-.p-user--other {
+.p-user.is-other {
   justify-content: flex-end;
   margin-left: 55%;
   width: 45%;
 }
 
 @media screen and (max-width:767px) {
-  .p-user--other {
+  .p-user.is-other {
     margin-left: 0;
     width: 100%;
   }
@@ -1451,27 +1451,27 @@ textarea {
   border-radius: 100%;
 }
 
-.p-user--me {
+.p-user.is-me {
   justify-content: flex-start;
   margin-right: 55%;
   width: 45%;
 }
 
 @media screen and (max-width:767px) {
-  .p-user--me {
+  .p-user.is-me {
     margin-right: 0;
     width: 100%;
   }
 }
 
-.p-user--other {
+.p-user.is-other {
   justify-content: flex-end;
   margin-left: 55%;
   width: 45%;
 }
 
 @media screen and (max-width:767px) {
-  .p-user--other {
+  .p-user.is-other {
     margin-left: 0;
     width: 100%;
   }
