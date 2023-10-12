@@ -39,6 +39,7 @@ Route::middleware('verified')->group(function () {
 
     // マイページ・ユーザー関連
     Route::get('/mypage', 'MypageController@mypage')->name('mypage');
+    Route::get('/home', 'MypageController@mypage')->name('mypage');
     Route::get('/prof/{user_id}', 'MypageController@prof')->name('prof');
     Route::get('/withdraw/{user_id}', 'MypageController@withdraw')->name('withdraw');
     Route::get('/user/info/{user_id}', 'HomeController@userInfo')->name('user.info');

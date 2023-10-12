@@ -41,11 +41,6 @@ class VerifyEmailJapanese extends VerifyEmail
      */
     public function toMail($notifiable)
     {
-        // return (new MailMessage)
-        //     ->subject('メールアドレスの確認') // メールのタイトル
-        //     ->action('登録を完了する', $this->verificationUrl($notifiable))
-        //     ->line('このボタンを押して本登録を完了させてください。')
-        //     ->line('よろしくお願いいたします。');
 
         return (new MailMessage)
             ->subject('メールアドレスの確認')
