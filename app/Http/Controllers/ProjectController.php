@@ -48,17 +48,17 @@ class ProjectController extends Controller
     
             // サムネ画像のパス名を変数に
             if ($request->hasFile('thumbnail')) {
-                $avatar = $request->file('thumbnail');
-                $filename = $avatar->getClientOriginalName();
+                $thumbnail = $request->file('thumbnail');
+                $filename = $thumbnail->getClientOriginalName();
 
                 // HEIC形式の画像をJPEG形式に変換
-                if ($avatar->getClientOriginalExtension() === 'heic') {
-                    $avatar = Image::make($avatar)->encode('jpg');
+                if ($thumbnail->getClientOriginalExtension() === 'heic') {
+                    $thumbnail = Image::make($thumbnail)->encode('jpg');
                     $filename = pathinfo($filename, PATHINFO_FILENAME) . '.jpg';
                 }
 
                 // 画像を圧縮して保存 
-                $compressedImage = Image::make($avatar)->resize(300, null, function ($constraint) {
+                $compressedImage = Image::make($thumbnail)->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
@@ -178,17 +178,17 @@ class ProjectController extends Controller
 
             // サムネ画像のパス名を変数に
             if ($request->hasFile('thumbnail')) {
-                $avatar = $request->file('thumbnail');
-                $filename = $avatar->getClientOriginalName();
+                $thumbnail = $request->file('thumbnail');
+                $filename = $thumbnail->getClientOriginalName();
                 
                 // HEIC形式の画像をJPEG形式に変換
-                if ($avatar->getClientOriginalExtension() === 'heic') {
-                    $avatar = Image::make($avatar)->encode('jpg');
+                if ($thumbnail->getClientOriginalExtension() === 'heic') {
+                    $thumbnail = Image::make($thumbnail)->encode('jpg');
                     $filename = pathinfo($filename, PATHINFO_FILENAME) . '.jpg';
                 }
 
                 // 画像を圧縮して保存 
-                $compressedImage = Image::make($avatar)->resize(300, null, function ($constraint) {
+                $compressedImage = Image::make($thumbnail)->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
                 });
@@ -206,7 +206,7 @@ class ProjectController extends Controller
             } else if ($project->thumbnail !== 'thumbnail-default.png') {
                 // 画像を変更しない場合
                 $filename = $project->thumbnail;
-                $filename = str_replace('/uploads/', '', $filename);
+                $filename = str_replace('storage/uploads/', '', $filename);
 
             } else {
                 // サムネが未選択の場合

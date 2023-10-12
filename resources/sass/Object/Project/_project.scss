@@ -45,7 +45,7 @@
 
     &__content{
         height: 80px;
-        overflow-y: hidden;
+        overflow-y: auto;
         word-break: normal;
 
         @include mq(){
