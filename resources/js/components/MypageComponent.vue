@@ -52,7 +52,7 @@
 
                     <div class="p-project" v-for="apply in applyList" :key="apply.id">
                         <p class="p-project__title c-title">
-                            <a :href="'/project/' + apply.id + '/detail'" class="c-link p-project__link">{{ apply.project.title }}</a>
+                            <a :href="'/project/' + apply.project.id + '/detail'" class="c-link p-project__link">{{ apply.project.title }}</a>
                         </p>
                     
                         <div class="p-project__image">

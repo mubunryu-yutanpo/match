@@ -6840,7 +6840,9 @@ var render = function () {
                           "a",
                           {
                             staticClass: "c-link p-project__link",
-                            attrs: { href: "/project/" + apply.id + "/detail" },
+                            attrs: {
+                              href: "/project/" + apply.project.id + "/detail",
+                            },
                           },
                           [_vm._v(_vm._s(apply.project.title))]
                         ),
