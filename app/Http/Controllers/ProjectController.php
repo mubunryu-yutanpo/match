@@ -78,7 +78,7 @@ class ProjectController extends Controller
             }
     
             // 案件のタイプに応じて料金の内容を変更
-            if ($request->type === 1) {
+            if ((int)$request->type === 1) {
                 // 金額は1,000をかけた値に変換
                 $upperPrice = $request->upperPrice * 1000;
                 $lowerPrice = $request->lowerPrice * 1000;
@@ -172,9 +172,15 @@ class ProjectController extends Controller
                 redirect('/')->with('flash_message', 'エラーが発生しました')->with('flash_message_type', 'error');
             }
 
-            // 金額は1,000をかけた値に変換
-            $upperPrice = $request->upperPrice * 1000;
-            $lowerPrice = $request->lowerPrice * 1000;
+            // 案件のタイプに応じて料金の内容を変更
+            if ((int)$request->type === 1) {
+                // 金額は1,000をかけた値に変換
+                $upperPrice = $request->upperPrice * 1000;
+                $lowerPrice = $request->lowerPrice * 1000;
+            } else {
+                $upperPrice = null;
+                $lowerPrice = null;
+            }
 
             // サムネ画像のパス名を変数に
             if ($request->hasFile('thumbnail')) {
@@ -193,8 +199,6 @@ class ProjectController extends Controller
                     $constraint->upsize();
                 });
 
-                // 画像をpublic/uploadsディレクトリに移動
-                // $moved = $compressedImage->save(public_path('uploads/'.$filename));
                 $moved = $compressedImage->save(storage_path('app/public/uploads/' . $filename));
 
                 

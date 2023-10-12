@@ -17,7 +17,7 @@
         <!-- 案件タイプ -->
         <div class="p-edit__container c-box--form-container">
             <label for="type" class="c-label p-edit__label">案件の種類:</label>
-                <select name="type" id="type" class="c-select p-edit__select @error('type') valid-error @enderror">
+                <select name="type" id="type" class="c-select p-edit__select @error('type') valid-error @enderror" value="">
 
                     <option value="" hidden>選択してください</option>
                     
@@ -120,15 +120,21 @@
 @show
 
 <script>
-    // 料金部分の表示切り替え（レベニューシェア案件の場合は非表示に）
+    // 料金部分の表示切り替え
     document.addEventListener('DOMContentLoaded', () => {
-        
         // セレクトボックスの要素を取得
         const typeSelect = document.getElementById('type');
+        const priceFields = document.getElementById('priceFields'); // 金額部分の要素
+
+        // 初期状態を確認
+        if (typeSelect.value === '1') {
+            priceFields.style.display = 'block';
+        } else {
+            priceFields.style.display = 'none';
+        }
 
         // セレクトボックスの値が変更されたときに実行される関数
         typeSelect.addEventListener('change', () => {
-            
             // セレクトボックスの値を取得
             const selectedValue = typeSelect.value;
 
@@ -141,8 +147,3 @@
         });
     });
 </script>
-
-
-
-
-
