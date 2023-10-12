@@ -154,7 +154,7 @@ export default {
 
         // アクションボタンのクリック時
         toRegister() {
-            window.location.href = '/register';
+            window.location.href = '/login';
         }
 
 

@@ -4496,7 +4496,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // アクションボタンのクリック時
     toRegister: function toRegister() {
-      window.location.href = '/register';
+      window.location.href = '/login';
     }
   },
   filters: {
