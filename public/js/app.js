@@ -2304,6 +2304,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2347,9 +2348,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var day = date.getDate();
       return "".concat(year, ".").concat(month, ".").concat(day);
     },
+    // DM画面へ
+    toDirectMessage: function toDirectMessage() {
+      window.location.href = '/messages/' + this.user_id + '/' + this.project.user_id;
+    },
     // Twitterにシェア
     twitterShare: function twitterShare() {
-      var shareURL = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent("案件名：" + this.project.title + " #match") + '&url=' + encodeURIComponent("https://yutanpo-output2.com/project" + this.project_id + "/detail");
+      var shareURL = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent("案件名：" + this.project.title + " #match") + '&url=' + encodeURIComponent("https://yutanpo-output2.com/project/" + this.project_id + "/detail");
       window.open(shareURL, '_blank');
     }
   },
@@ -3143,7 +3148,7 @@ __webpack_require__.r(__webpack_exports__);
     handleScroll: function handleScroll() {
       var scrollPosition = window.scrollY || document.documentElement.scrollTop;
       var headerElement = document.querySelector('.p-header');
-      if (scrollPosition > 200) {
+      if (scrollPosition > 100) {
         // スクロール位置が500pxを超えた場合、クラス名を追加
         headerElement.classList.add('is-bg-change');
       } else {
@@ -4437,7 +4442,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       swiperOptions: {
         loop: true,
         // ループ有効
-        //speed: 6000, // ループの時間
+        speed: 6000,
+        // ループの時間
         autoplay: {
           delay: 3000 // 途切れなくループ
         },
@@ -4448,12 +4454,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         // 一度に表示する枚数
 
         breakpoints: {
+          768: {
+            slidesPerView: 3
+          },
           420: {
             slidesPerView: 2,
             spaceBetween: 15
-          },
-          768: {
-            slidesPerView: 3
           }
         }
       }
@@ -4525,7 +4531,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.swiper-container{\n    border-radius: 5px;\n}\n.swiper-slide{\n    max-width: 350px;\n}\n", ""]);
+exports.push([module.i, "\n.swiper-container{\n    border-radius: 5px;\n}\n", ""]);
 
 // exports
 
@@ -5924,13 +5930,10 @@ var render = function () {
         _c("div", { staticClass: "p-detail__dm" }, [
           this.user_id !== this.project.user_id
             ? _c(
-                "a",
+                "button",
                 {
-                  staticClass: "p-detail__dm-link c-link",
-                  attrs: {
-                    href:
-                      "/messages/" + this.user_id + "/" + this.project.user_id,
-                  },
+                  staticClass: "p-detail__dm-button c-button",
+                  on: { click: _vm.toDirectMessage },
                 },
                 [
                   _c("i", { staticClass: "fa-solid fa-envelope c-icon" }),

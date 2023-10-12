@@ -232,12 +232,14 @@ class ApiController extends Controller
                         }
                     }
 
-                    // メッセージとユーザー情報をリストに追加
-                    $directMessageList[] = [
-                        'message'    => $latestMessage,
-                        'other_user' => $otherUser,
-                        'isRead'     => $isRead,
-                    ];
+                    if($latestMessage !== null){
+                        // メッセージとユーザー情報をリストに追加
+                        $directMessageList[] = [
+                            'message'    => $latestMessage,
+                            'other_user' => $otherUser,
+                            'isRead'     => $isRead,
+                        ];
+                    }
                 }
             }
 

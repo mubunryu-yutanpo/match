@@ -30,7 +30,16 @@
         position: relative;
 
         &-item{
-            max-height: 250px;
+            height: 250px;
+
+            @include mq(lg){
+                height: 200px;
+            }
+
+            @include mq(sm){
+                height: 250px;
+            }
+            
         }
     }
 

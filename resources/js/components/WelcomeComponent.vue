@@ -116,7 +116,7 @@ export default {
         // swiperの設定たち
         swiperOptions: {
             loop: true, // ループ有効
-            //speed: 6000, // ループの時間
+            speed: 6000, // ループの時間
             autoplay: {
             delay: 3000, // 途切れなくループ
             },        
@@ -124,15 +124,14 @@ export default {
             slidesPerView: 1,// 一度に表示する枚数
             
             breakpoints: {
-            
-            420:{
-                slidesPerView: 2,
-                spaceBetween: 15
-            },
+                768:{
+                    slidesPerView: 3
+                },
 
-            768:{
-                slidesPerView: 3
-            }
+                420:{
+                    slidesPerView: 2,
+                    spaceBetween: 15
+                }
             },
         },
 
@@ -188,9 +187,6 @@ export default {
 <style>
     .swiper-container{
         border-radius: 5px;
-    }
-    .swiper-slide{
-        max-width: 350px;
     }
 </style>
 

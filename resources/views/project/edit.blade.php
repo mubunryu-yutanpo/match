@@ -45,28 +45,31 @@
                 @enderror
         </div>
 
-        <!-- 料金（上限） -->
-        <div class="p-edit__container c-box--form-container">
-            <label for="upperPrice" class="c-label p-edit__label">料金上限（単位：千円）:</label>
-                <input id="upperPrice" type="number" class="c-input p-edit__input @error('upperPrice') valid-error @enderror" name="upperPrice" value="{{ old('upperPrice', $savedUpperPrice ) }}" required autofocus placeholder="〜999999">
-                @error('upperPrice')
-                    <span class="c-error c-error--text p-edit__error-text" role="alert">
-                        {{ $message }}
-                    </span>
-                @enderror
-        </div>
+        <!-- 表示を切り替えるフォーム部分 -->
+        <div id="priceFields" style="display: none;">
+            <!-- 料金（上限） -->
+            <div class="p-edit__container c-box--form-container">
+                <label for="upperPrice" class="c-label p-edit__label">料金上限（単位：千円）:</label>
+                    <input id="upperPrice" type="number" class="c-input p-edit__input @error('upperPrice') valid-error @enderror" name="upperPrice" value="{{ old('upperPrice', $savedUpperPrice ) }}" required autofocus placeholder="〜999999">
+                    @error('upperPrice')
+                        <span class="c-error c-error--text p-edit__error-text" role="alert">
+                            {{ $message }}
+                        </span>
+                    @enderror
+            </div>
 
-        <!-- 料金（下限） -->
-        <div class="p-edit__container c-box--form-container">
-            <label for="lowerPrice" class="c-label p-edit__label">料金下限（単位：千円）:</label>
-                <input id="lowerPrice" type="number" class="c-input p-edit__input @error('lowerPrice') valid-error @enderror" name="lowerPrice" value="{{ old('lowerPrice', $savedLowerPrice ) }}" required autofocus placeholder="1〜">
-                @error('lowerPrice')
-                    <span class="c-error c-error--text p-edit__error-text" role="alert">
-                        {{ $message }}
-                    </span>
-                @enderror
-        </div>
+            <!-- 料金（下限） -->
+            <div class="p-edit__container c-box--form-container">
+                <label for="lowerPrice" class="c-label p-edit__label">料金下限（単位：千円）:</label>
+                    <input id="lowerPrice" type="number" class="c-input p-edit__input @error('lowerPrice') valid-error @enderror" name="lowerPrice" value="{{ old('lowerPrice', $savedLowerPrice ) }}" required autofocus placeholder="1〜">
+                    @error('lowerPrice')
+                        <span class="c-error c-error--text p-edit__error-text" role="alert">
+                            {{ $message }}
+                        </span>
+                    @enderror
+            </div>
 
+        </div>
 
         <!-- サムネ画像 -->
         <div id="app">
@@ -115,3 +118,31 @@
 @section('footer')
     @parent
 @show
+
+<script>
+    // 料金部分の表示切り替え（レベニューシェア案件の場合は非表示に）
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // セレクトボックスの要素を取得
+        const typeSelect = document.getElementById('type');
+
+        // セレクトボックスの値が変更されたときに実行される関数
+        typeSelect.addEventListener('change', () => {
+            
+            // セレクトボックスの値を取得
+            const selectedValue = typeSelect.value;
+
+            // レベニューシェア案件の場合は非表示に
+            if (selectedValue === '1') {
+                priceFields.style.display = 'block';
+            } else {
+                priceFields.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+
+
+

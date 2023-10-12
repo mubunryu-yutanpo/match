@@ -10,10 +10,11 @@
         <div class="p-detail__ c-box--flex">
 
             <div class="p-detail__dm">
-                <a :href="'/messages/' + this.user_id + '/' + this.project.user_id " class="p-detail__dm-link c-link" v-if="this.user_id !== this.project.user_id">
+                <button class="p-detail__dm-button c-button" v-if="this.user_id !== this.project.user_id" @click="toDirectMessage">
                     <i class="fa-solid fa-envelope c-icon"></i>
                     メッセージを送る
-                </a>
+                </button>
+
             </div>
             <div class="p-detail__share">
                 <button class="p-detail__share-button c-button" @click="twitterShare">
@@ -92,9 +93,14 @@ export default {
             return `${year}.${month}.${day}`;
         },
 
+        // DM画面へ
+        toDirectMessage(){
+            window.location.href='/messages/' + this.user_id + '/' + this.project.user_id;
+        },
+
         // Twitterにシェア
         twitterShare() {
-            const shareURL = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent("案件名：" + this.project.title + " #match") + '&url=' + encodeURIComponent("https://yutanpo-output2.com/project" + this.project_id + "/detail");
+            const shareURL = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent("案件名：" + this.project.title + " #match") + '&url=' + encodeURIComponent("https://yutanpo-output2.com/project/" + this.project_id + "/detail");
             window.open(shareURL, '_blank');
         },
 

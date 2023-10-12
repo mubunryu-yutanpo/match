@@ -64,7 +64,8 @@ class ProjectController extends Controller
                 });
 
                 // 画像をpublic/uploadsディレクトリに移動
-                $moved = $compressedImage->save(public_path('uploads/'.$filename));
+                // $moved = $compressedImage->save(public_path('uploads/'.$filename));
+                $moved = $compressedImage->save(storage_path('app/public/uploads/' . $filename));
                 
                 if (!$moved) {
                     // 画像の保存等が失敗した場合
@@ -92,7 +93,7 @@ class ProjectController extends Controller
                 'type'       => $request->type,
                 'upperPrice' => $upperPrice,
                 'lowerPrice' => $lowerPrice,
-                'thumbnail'  => '/uploads/'.$filename,
+                'thumbnail'  => '/storage/uploads/'.$filename,
                 'content'    => $request->content,
             ])->save();
     
@@ -193,7 +194,9 @@ class ProjectController extends Controller
                 });
 
                 // 画像をpublic/uploadsディレクトリに移動
-                $moved = $compressedImage->save(public_path('uploads/'.$filename));
+                // $moved = $compressedImage->save(public_path('uploads/'.$filename));
+                $moved = $compressedImage->save(storage_path('app/public/uploads/' . $filename));
+
                 
                 if (!$moved) {
                     // 画像の保存等が失敗した場合
@@ -216,7 +219,7 @@ class ProjectController extends Controller
                 'type'       => $request->type,
                 'upperPrice' => $upperPrice,
                 'lowerPrice' => $lowerPrice,
-                'thumbnail'    => '/uploads/'.$filename,
+                'thumbnail'    => '/storage/uploads/'.$filename,
                 'content'    => $request->content,
             ]);
 

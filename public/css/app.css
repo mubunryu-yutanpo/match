@@ -778,17 +778,16 @@ textarea {
   }
 }
 
-.p-detail__dm-link {
-  background: #235789;
-  border: 1px solid white;
+.p-detail__dm-button {
   border-radius: 20px;
   box-shadow: 0 0 2px 0 gray;
   color: white;
   font-size: 14px;
-  padding: 15px 20px;
+  font-weight: bold;
+  padding: 10px 15px;
 }
 
-.p-detail__dm-link:hover {
+.p-detail__dm-button:hover {
   background: #c6d4e1;
   border: 1px solid #235789;
   color: #235789;
@@ -1049,6 +1048,7 @@ textarea {
   font-size: 24px;
   height: 100%;
   position: absolute;
+  top: 0;
   transition: all 0.3s;
   transform: rotate(0deg);
   right: 0;
@@ -1254,7 +1254,19 @@ textarea {
 }
 
 .p-project__image-item {
-  max-height: 250px;
+  height: 250px;
+}
+
+@media screen and (max-width:1000px) {
+  .p-project__image-item {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width:479px) {
+  .p-project__image-item {
+    height: 250px;
+  }
 }
 
 .p-project__content {
