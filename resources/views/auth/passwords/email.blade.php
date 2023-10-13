@@ -1,47 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.parent')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+@section('title', 'パスワードリセットリンク発行')
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@section('main')
+    
+    <form action="{{ route('password.email') }}" method="post" class="p-reset-email c-box--form">
+        @csrf
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+        <h2 class="p-reset-email__title c-title">
+            <i class="fa-solid fa-envelope-circle-check c-icon c-icon--title"></i>
+            パスワードリセット
+        </h2>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+        <div class="p-reset-email__container">
+            <p class="p-reset-email__text c-text">以下のメールアドレスにパスワード再発行のためのリンクをお送りします。</p>
         </div>
-    </div>
-</div>
+
+        <div class="p-reset-email__container c-box--form-container">
+            <label for="email" class="c-label">メールアドレス:</label>
+            <input id="email" type="email" class="c-input @error('email') valid-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            @error('email')
+                <span class="c-error c-error--text" role="alert">
+                    {{ $message }}
+                </span>
+            @enderror
+        </div>
+
+        <div class="p-submit">
+            <button type="submit" class="p-submit__button c-button">リンクを受け取る</button>
+        </div>
+
+    </form>
+
+
 @endsection

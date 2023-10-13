@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\ValidRequest;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
