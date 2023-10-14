@@ -19,9 +19,11 @@ class ResetPasswordController extends Controller
     public function showResetForm(Request $request, $token)
     {
         $hashedToken = hash('sha256', $token);  // 受け取ったトークンをハッシュ化
+
+        dd($token, $hashedToken);
     
         // ハッシュ化されたトークンを使用してデータベースを検索
-        $record = DB::table('password_resets')->where('token', $token)->first();
+        $record = DB::table('password_resets')->where('token', $hashedToken)->first();
     
         if (!$record) {
             dd('!$record');
