@@ -20,26 +20,28 @@ class ResetPasswordController extends Controller
     {
         $hashedToken = hash('sha256', $token);  // 受け取ったトークンをハッシュ化
 
-        dd($token, $hashedToken);
-    
         // ハッシュ化されたトークンを使用してデータベースを検索
-        $record = DB::table('password_resets')->where('token', $hashedToken)->first();
+        $record1 = DB::table('password_resets')->where('token', $hashedToken)->first();
+        $record2 = DB::table('password_resets')->where('token', $hashedToken)->first();
+
+        dd($record1,$record2,Hash::check($hashedToken, $record1->token),Hash::check($token, $record1->token),Hash::check($hashedToken, $record2->token),Hash::check($token, $record2->token),);
+
     
-        if (!$record) {
+        if (!$record1) {
             dd('!$record');
             return view('auth.passwords.reset_expired');
         }
     
         // トークンの有効期限をチェック
         $expires = now()->subMinutes(config('auth.passwords.users.expire'));
-        if ($record->created_at->lt($expires)) {
+        if ($record1->created_at->lt($expires)) {
             dd('その下');
             return view('auth.passwords.reset_expired');
         }
     
         // トークンが有効であれば、リセットフォームを表示
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $record->email]
+            ['token' => $token, 'email' => $record1->email]
         );
     }
     
