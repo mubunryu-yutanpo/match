@@ -19,7 +19,7 @@ class ResetPasswordController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if (!$user || !Password::tokenExists($user, $request->only('token'))) {
+        if (!$user || !$this->tokenHasExpired($user, $token)) {
             return view('auth.passwords.reset_expired');
         }
 
@@ -28,9 +28,15 @@ class ResetPasswordController extends Controller
         );
     }
 
+    protected function tokenHasExpired($user, $token)
+    {
+        $expires = now()->subMinutes(config('auth.passwords.users.expire'));
+        return $user->passwordReset->created_at->lt($expires);
+    }
+
     protected function resetPassword($user, $password)
     {
-        $user->password = Hash::make($password); // パスワードをハッシュ化
+        $user->password = Hash::make($password);
         $user->save();
     }
 
