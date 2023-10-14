@@ -24,7 +24,7 @@ class ForgotPasswordController extends Controller
             }
 
             // パスワードリセットトークンを生成し、メールを送信
-            Password::sendResetLink($request->only('email'));
+            Password::sendResetLink(['email' => $request->email]);
 
             // パスワードリセットリンクの送信が成功した場合の処理
             return back()->with('flash_message', 'パスワード再設定のメールを送信しました')->with('flash_message_type', 'success');
