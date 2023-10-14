@@ -11,6 +11,7 @@
 |
 */
 
+
 /* ================================================================
 
     全ユーザーが閲覧可能ページ
@@ -19,6 +20,7 @@
 
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/list', 'HomeController@projectList')->name('list');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
 
 /* ================================================================
@@ -27,7 +29,6 @@ Route::get('/list', 'HomeController@projectList')->name('list');
 
 =================================================================*/
 
-// Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::middleware('verified')->group(function () {
@@ -128,7 +129,6 @@ Route::middleware('api')->group(function(){
     Route::get('/api/{user_id}/publicMessageList', 'ApiController@getPublicMessageList');
     // DM取得
     Route::get('/api/{user_id}/directMessageList', 'ApiController@getDirectMessageList');
-
 
 });
 

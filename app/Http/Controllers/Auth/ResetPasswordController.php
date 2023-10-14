@@ -28,6 +28,15 @@ class ResetPasswordController extends Controller
      */
     protected $redirectTo = '/mypage';
 
+    // パスワードリセットフォームへ
+    public function showResetForm(Request $request, $token)
+    {
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
+
     // リセットの期限切れを知らせるページを表示する
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
