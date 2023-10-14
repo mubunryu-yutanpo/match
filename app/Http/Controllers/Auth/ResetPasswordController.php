@@ -21,7 +21,7 @@ class ResetPasswordController extends Controller
         $hashedToken = hash('sha256', $token);  // 受け取ったトークンをハッシュ化
     
         // ハッシュ化されたトークンを使用してデータベースを検索
-        $record = DB::table('password_resets')->where('token', $hashedToken)->first();
+        $record = DB::table('password_resets')->where('token', $token)->first();
     
         if (!$record) {
             dd('!$record');
