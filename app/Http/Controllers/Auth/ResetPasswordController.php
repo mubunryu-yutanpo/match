@@ -38,8 +38,14 @@ class ResetPasswordController extends Controller
             'token' => 'required',
             'email' => 'required|email',
             'password' => 'required|confirmed|min:8',
+        ], [
+            'email.required' => 'メールアドレスは必須です。',
+            'email.email' => '正しいメールアドレスを入力してください。',
+            'password.required' => '新しいパスワードは必須です。',
+            'password.confirmed' => 'パスワードが一致しません。',
+            'password.min' => 'パスワードは少なくとも8文字以上である必要があります。',
         ]);
-
+        
         // パスワードリセットが成功した場合、フラッシュメッセージを表示
         $response = $this->broker()->reset(
             $this->credentials($request),
@@ -49,7 +55,7 @@ class ResetPasswordController extends Controller
         );
 
         if ($response == Password::PASSWORD_RESET) {
-            return redirect()->route('login')->with('flash_message', 'パスワードを変更しました！');
+            return redirect()->route('login')->with('flash_message', 'パスワードを変更しました！')->with('flash_message_type', 'success');
         } else {
             return $this->sendResetFailedResponse($request, $response);
         }
