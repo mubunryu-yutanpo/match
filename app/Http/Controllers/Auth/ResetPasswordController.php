@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
@@ -13,11 +15,11 @@ class ResetPasswordController extends Controller
 
     protected $redirectTo = '/mypage';
 
-
     public function showResetForm(Request $request, $token)
     {
-        // トークンの有効期限をチェックし、期限切れの場合はリダイレクト
-        if (!Password::tokenExists($request->only('email', 'token'))) {
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user || !Password::tokenExists($user, $request->only('token'))) {
             return view('auth.passwords.reset_expired');
         }
 
@@ -28,7 +30,7 @@ class ResetPasswordController extends Controller
 
     protected function resetPassword($user, $password)
     {
-        $user->password = bcrypt($password);
+        $user->password = Hash::make($password); // パスワードをハッシュ化
         $user->save();
     }
 
@@ -45,8 +47,7 @@ class ResetPasswordController extends Controller
             'password.confirmed' => 'パスワードが一致しません。',
             'password.min' => 'パスワードは少なくとも8文字以上である必要があります。',
         ]);
-        
-        // パスワードリセットが成功した場合、フラッシュメッセージを表示
+
         $response = $this->broker()->reset(
             $this->credentials($request),
             function ($user, $password) {
