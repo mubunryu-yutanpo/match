@@ -18,20 +18,29 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token)
     {
-        $email = DB::table('password_resets')->where('token', $token)->first();
-        $user = User::where('email', $email)->first();
-        dd($email, $user, $token);
-
-
-        if (!$user || !$this->tokenHasExpired($user, $token)) {
+        $hashedToken = hash('sha256', $token);  // 受け取ったトークンをハッシュ化
+    
+        // ハッシュ化されたトークンを使用してデータベースを検索
+        $record = DB::table('password_resets')->where('token', $hashedToken)->first();
+    
+        if (!$record) {
+            dd('!$record');
             return view('auth.passwords.reset_expired');
         }
-
+    
+        // トークンの有効期限をチェック
+        $expires = now()->subMinutes(config('auth.passwords.users.expire'));
+        if ($record->created_at->lt($expires)) {
+            dd('その下');
+            return view('auth.passwords.reset_expired');
+        }
+    
+        // トークンが有効であれば、リセットフォームを表示
         return view('auth.passwords.reset')->with(
-            ['token' => $token, 'email' => $request->email]
+            ['token' => $token, 'email' => $record->email]
         );
     }
-
+    
     protected function tokenHasExpired($user, $token)
     {
         $expires = now()->subMinutes(config('auth.passwords.users.expire'));
