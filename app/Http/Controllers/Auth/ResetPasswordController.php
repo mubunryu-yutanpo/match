@@ -16,8 +16,8 @@ class ResetPasswordController extends Controller
 
     protected $redirectTo = '/mypage';
 
-    public function __construct()
+    protected function sendResetResponse($response)
     {
-        $this->middleware('guest');
+        return redirect()->view('login')->with('flash_message', 'パスワードを変更しました')->with('flash_message_type', 'success');
     }
 }
