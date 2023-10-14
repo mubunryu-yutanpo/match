@@ -18,7 +18,6 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse($response)
     {
-        dd('ok');
         return redirect()->route('login')->with('flash_message', 'パスワードを変更しました')->with('flash_message_type', 'success');
     }
 
@@ -26,6 +25,15 @@ class ResetPasswordController extends Controller
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
         return view('auth.passwords.reset_expired');
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'email'], // メールアドレスのバリデーションルール
+            'password' => ['required', 'min:8'], // パスワードのバリデーションルール
+            'password_confirmation' => ['required', 'same:password'], // パスワード再入力のバリデーションルール
+        ]);
     }
 
 }
