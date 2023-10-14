@@ -18,7 +18,7 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse($response)
     {
-        return redirect()->route('login')->with('flash_message', 'パスワードを変更しました')->with('flash_message_type', 'success');
+        return redirect('/mypage')->with('flash_message', 'パスワードを変更しました')->with('flash_message_type', 'success');
     }
 
     // リセットの期限切れを知らせるページを表示する
