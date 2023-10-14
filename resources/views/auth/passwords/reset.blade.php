@@ -18,12 +18,12 @@
         </div>
 
         <div class="p-reset__container c-box--form-container">
-            <label for="password" class="c-label">パスワード:</label>
+            <label for="password" class="c-label">新しいパスワード:</label>
             <input id="password" type="password" class="c-input @error('password') valid-error @enderror" name="password" required autocomplete="current-password">
             @error('password')
-            <span class="c-error c-error--text" role="alert">
-                {{ $message }}
-            </span>
+                <span class="c-error c-error--text" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
 
@@ -31,9 +31,9 @@
             <label for="password-confirm" class="c-label">パスワード(再入力):</label>
             <input id="password-confirm" type="password" class="c-input @error('password-confirm') valid-error @enderror" name="password_confirmation" required autocomplete="new-password">
             @error('password-confirm')
-            <span class="c-error c-error--text" role="alert">
-                {{ $message }}
-            </span>
+                <span class="c-error c-error--text" role="alert">
+                    {{ $message }}
+                </span>
             @enderror
         </div>
 

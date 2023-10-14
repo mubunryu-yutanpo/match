@@ -890,6 +890,10 @@ textarea {
   margin: 0;
 }
 
+.p-header__link {
+  color: white;
+}
+
 @media screen and (max-width:767px) {
   .p-hero__image {
     display: none;

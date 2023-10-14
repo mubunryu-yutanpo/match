@@ -36,7 +36,9 @@
         <header id="header" class="l-header">
             <div class="p-header">
                 <!-- アプリタイトル -->
-                <h1 class="p-header__title">match</h1>
+                <h1 class="p-header__title">
+                    <a href="/" class="p-header__link">match</a>
+                </h1>
 
                 <!-- SP用メニューボタン -->
                 <menu-component></menu-component>
