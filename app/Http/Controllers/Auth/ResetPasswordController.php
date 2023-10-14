@@ -18,6 +18,14 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse($response)
     {
-        return redirect()->view('login')->with('flash_message', 'パスワードを変更しました')->with('flash_message_type', 'success');
+        dd('ok');
+        return redirect()->route('login')->with('flash_message', 'パスワードを変更しました')->with('flash_message_type', 'success');
     }
+
+    // リセットの期限切れを知らせるページを表示する
+    protected function sendResetLinkFailedResponse(Request $request, $response)
+    {
+        return view('auth.passwords.reset_expired');
+    }
+
 }
