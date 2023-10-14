@@ -24,8 +24,9 @@ class ResetPasswordController extends Controller
     // リセットの期限切れを知らせるページを表示する
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
-        return view('auth.passwords.reset_expired');
+        redirect('/reset-link-expired')->with('flash_message', 'リンクの有効期限が切れています')->with('flash_message_type', 'error');
     }
+
 
     protected function validator(array $data)
     {
