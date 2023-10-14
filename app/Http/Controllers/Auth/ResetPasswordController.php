@@ -18,6 +18,8 @@ class ResetPasswordController extends Controller
     public function showResetForm(Request $request, $token)
     {
         $user = User::where('email', $request->email)->first();
+        dd($user, $token);
+
 
         if (!$user || !$this->tokenHasExpired($user, $token)) {
             return view('auth.passwords.reset_expired');
