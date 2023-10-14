@@ -27,7 +27,7 @@
             @enderror
         </div>
 
-        <div class="p-reset__container">
+        <div class="p-reset__container c-box--form-container">
             <label for="password-confirm" class="c-label">パスワード(再入力):</label>
             <input id="password-confirm" type="password" class="c-input @error('password-confirm') valid-error @enderror" name="password_confirmation" required autocomplete="new-password">
             @error('password-confirm')
