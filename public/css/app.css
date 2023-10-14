@@ -576,7 +576,7 @@ textarea {
   color: #54654f;
 }
 
-.p-alert.is-eeror {
+.p-alert.is-error {
   background-color: #fee2e2;
   border-color: #fed7d7;
   color: #823a3a;

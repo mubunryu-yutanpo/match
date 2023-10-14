@@ -55,8 +55,7 @@ class CustomResetPassword extends Notification
         ->from('admin@example.com', config('app.name'))
         ->subject('パスワード再設定')
         ->line('下のボタンをクリックしてパスワードを再設定してください。')
-        // ->action('パスワード再設定', url(config('app.url').route('password.reset', $this->token, false)))
-        ->line(url('/welcome'))
+        ->action('パスワード再設定', url(config('app.url').route('password.reset', $this->token, false)))
         ->line('もし心当たりがない場合このメールを破棄してください。');    }
 
     /**

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use App\User;
+use Illuminate\Database\QueryException;
 
 class ForgotPasswordController extends Controller
 {
@@ -14,19 +15,24 @@ class ForgotPasswordController extends Controller
 
     public function sendResetLinkEmail(Request $request)
     {
-        // メールアドレスがデータベース内に存在するか確認
-        $this->validate($request, ['email' => 'required|email']);
-        $user = User::where('email', $request->email)->first();
+        try{
+            // メールアドレスがデータベース内に存在するか確認
+            $user = User::where('email', $request->email)->first();
 
-        if (!$user) {
-            return back()->with('error', 'そのメールアドレスは登録されていません。');
+            if ($user === null) {
+                return back()->with('flash_message', 'メールの送信に失敗しました。メールアドレスをご確認ください')->with('flash_message_type', 'error');
+            }
+
+            // パスワードリセットトークンを生成し、メールを送信
+            Password::sendResetLink($request->only('email'));
+
+            // パスワードリセットリンクの送信が成功した場合の処理
+            return back()->with('flash_message', 'パスワード再設定のメールを送信しました')->with('flash_message_type', 'success');
+
+        }catch(QueryException $e){
+            Log::error('パスワードリセットリンク送信エラー：'.$e->getMessage());
+            return back()->with('flash_message', '予想外のエラーが発生しました')->with('flash_message_type', 'error');
         }
-
-        // パスワードリセットトークンを生成し、メールを送信
-        Password::sendResetLink($request->only('email'));
-
-        // パスワードリセットリンクの送信が成功した場合の処理
-        return back()->with('flash_message', 'パスワード再設定のメールを送信しました')->with('flash_message_type', 'success');
     }
 
 
