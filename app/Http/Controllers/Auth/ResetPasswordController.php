@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
@@ -17,8 +18,9 @@ class ResetPasswordController extends Controller
 
     public function showResetForm(Request $request, $token)
     {
-        $user = User::where('email', $request->email)->first();
-        dd($request->email, $user, $token);
+        $email = DB::table('password_resets')->where('token', $token)->first();
+        $user = User::where('email', $email)->first();
+        dd($email, $user, $token);
 
 
         if (!$user || !$this->tokenHasExpired($user, $token)) {
