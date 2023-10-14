@@ -6,6 +6,7 @@
 
     <form action="{{ route('password.update') }}" method="post" class="p-reset c-box--form">
         @csrf
+        <input type="hidden" name="token" value="{{ $token }}">
 
         <div class="p-reset__container c-box--form-container">
             <label for="email" class="c-label">メールアドレス:</label>
@@ -38,6 +39,4 @@
         </div>
 
     </form>
-
-
 @endsection
