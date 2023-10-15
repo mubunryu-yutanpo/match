@@ -4,7 +4,7 @@
 <br>
 
 @component('mail::button', ['url' => $actionUrl])
-    パスワードリセット
+    パスワードの再設定画面へ
 @endcomponent
 
 <br>
