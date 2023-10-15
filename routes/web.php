@@ -22,7 +22,6 @@ Route::get('/', 'HomeController@home')->name('home');
 Route::get('/list', 'HomeController@projectList')->name('list');
 
 Route::get('/reset-link-expired', function () {
-    dd('ok');
     return view('auth.passwords.reset_expired');
 });
 
