@@ -20,7 +20,11 @@
 
 Route::get('/', 'HomeController@home')->name('home');
 Route::get('/list', 'HomeController@projectList')->name('list');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+
+Route::get('/reset-link-expired', function () {
+    dd('ok');
+    return view('auth.passwords.reset_expired');
+});
 
 
 /* ================================================================
