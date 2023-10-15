@@ -21,6 +21,7 @@ class ForgotPasswordController extends Controller
             $request->only('email')
         );
 
+        // 正常にメールが送られた場合
         if ($response == Password::RESET_LINK_SENT) {
             return back()->with('flash_message', 'メールを送信しました！')->with('flash_message_type', 'success');
         }

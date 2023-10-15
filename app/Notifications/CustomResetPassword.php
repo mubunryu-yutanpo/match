@@ -52,6 +52,7 @@ class CustomResetPassword extends Notification
             // パスワードリセットのリンクを生成
             $actionUrl = url('password/reset', $this->token);
 
+            // カスタマイズしたメールテンプレートを使う
             return (new MailMessage)
                 ->from('match.app.infomation@gmail.com', config('app.name'))
                 ->subject('パスワード再設定のご案内')
