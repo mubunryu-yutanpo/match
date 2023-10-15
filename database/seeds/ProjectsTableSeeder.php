@@ -39,6 +39,15 @@ class ProjectsTableSeeder extends Seeder
                 'lowerPrice' => null,
                 'content'    => 'こどもの「好き」を伸ばします。こどもが楽しんで自主的に勉強できる環境を作りましょう',
             ],
+            [
+                'user_id'    => 1,
+                'title'      => '秋の大運動会開催決定！スポンサー求む',
+                'type'       => 2,
+                'thumbnail'  => '/storage/uploads/img23.jpg',
+                'upperPrice' => null,
+                'lowerPrice' => null,
+                'content'    => 'ついに開催が決定しました！一緒に盛り上げてくれるスポンサー企業を募集します。',
+            ],
 
 
         ];
