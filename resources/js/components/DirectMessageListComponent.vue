@@ -53,7 +53,7 @@
                 class="p-pagination__button c-button"
                 @click="changePage(1)"
             >
-                ←
+                ＜
             </button>
 
             <!-- 前のページボタン -->
@@ -91,7 +91,7 @@
                 class="p-pagination__button c-button"
                 @click="changePage(totalPages)"
             >
-                →
+                ＞
             </button>
         </section>
     </div>

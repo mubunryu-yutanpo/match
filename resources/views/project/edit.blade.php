@@ -36,7 +36,7 @@
 
         <!-- 案件名 -->
         <div class="p-edit__container c-box--form-container">
-            <label for="title" class="c-label p-edit__label">タイトル:</label>
+            <label for="title" class="c-label p-edit__label">*タイトル:</label>
                 <input id="title" type="text" class="c-input p-edit__input @error('title') valid-error @enderror" name="title" value="{{ old('title', $project->title) }}" required autocomplete="title" autofocus>
                 @error('title')
                     <span class="c-error c-error--text p-edit__error-text" role="alert">
@@ -49,7 +49,7 @@
         <div id="priceFields" style="display: none;">
             <!-- 料金（上限） -->
             <div class="p-edit__container c-box--form-container">
-                <label for="upperPrice" class="c-label p-edit__label">料金上限（単位：千円）:</label>
+                <label for="upperPrice" class="c-label p-edit__label">*料金上限（単位：千円）:</label>
                     <input id="upperPrice" type="number" class="c-input p-edit__input @error('upperPrice') valid-error @enderror" name="upperPrice" value="{{ old('upperPrice', $savedUpperPrice ) }}" required autofocus placeholder="〜999999">
                     @error('upperPrice')
                         <span class="c-error c-error--text p-edit__error-text" role="alert">
@@ -60,7 +60,7 @@
 
             <!-- 料金（下限） -->
             <div class="p-edit__container c-box--form-container">
-                <label for="lowerPrice" class="c-label p-edit__label">料金下限（単位：千円）:</label>
+                <label for="lowerPrice" class="c-label p-edit__label">*料金下限（単位：千円）:</label>
                     <input id="lowerPrice" type="number" class="c-input p-edit__input @error('lowerPrice') valid-error @enderror" name="lowerPrice" value="{{ old('lowerPrice', $savedLowerPrice ) }}" required autofocus placeholder="1〜">
                     @error('lowerPrice')
                         <span class="c-error c-error--text p-edit__error-text" role="alert">

@@ -1070,6 +1070,16 @@ textarea {
   text-align: right;
 }
 
+.p-mypage {
+  padding: 60px 0;
+}
+
+@media screen and (max-width:767px) {
+  .p-mypage {
+    padding: 40px 0;
+  }
+}
+
 .p-mypage-list__container {
   margin-right: -15px;
   padding: 0 0 0 15px;

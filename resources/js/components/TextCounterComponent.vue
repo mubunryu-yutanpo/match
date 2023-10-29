@@ -1,7 +1,7 @@
 <!-- Vue側 -->
 <template>
     <div class="p-counter">
-        <label :for="name" class="c-label p-counter__label">{{ label }}:</label>
+        <label :for="name" class="c-label p-counter__label">*{{ label }}:</label>
         <textarea
         :name="name"
         :id="id"
@@ -13,6 +13,7 @@
         :placeholder="placeholder"
         v-model="countText"
         @input="updatecount"
+        required
         ></textarea>
 
         <p class="p-counter__text" :class="{'c-error c-error--text': count > max }">

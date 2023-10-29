@@ -4056,6 +4056,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -5736,7 +5737,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n        <\n    ")]
+              [_vm._v("\n        ＜\n    ")]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -5798,7 +5799,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n        >\n    ")]
+              [_vm._v("\n        ＞\n    ")]
             )
           : _vm._e(),
       ],
@@ -6324,7 +6325,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n            ←\n        ")]
+              [_vm._v("\n            ＜\n        ")]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -6386,7 +6387,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n            →\n        ")]
+              [_vm._v("\n            ＞\n        ")]
             )
           : _vm._e(),
       ],
@@ -7224,7 +7225,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n        <\n    ")]
+              [_vm._v("\n        ＜\n    ")]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -7286,7 +7287,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n        >\n    ")]
+              [_vm._v("\n        ＞\n    ")]
             )
           : _vm._e(),
       ],
@@ -7576,7 +7577,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n        <\n    ")]
+              [_vm._v("\n        ＜\n    ")]
             )
           : _vm._e(),
         _vm._v(" "),
@@ -7638,7 +7639,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n        >\n    ")]
+              [_vm._v("\n        ＞\n    ")]
             )
           : _vm._e(),
       ],
@@ -7682,7 +7683,7 @@ var render = function () {
     _c(
       "label",
       { staticClass: "c-label p-counter__label", attrs: { for: _vm.name } },
-      [_vm._v(_vm._s(_vm.label) + ":")]
+      [_vm._v("*" + _vm._s(_vm.label) + ":")]
     ),
     _vm._v(" "),
     _c("textarea", {
@@ -7703,6 +7704,7 @@ var render = function () {
         rows: "10",
         autocomplete: _vm.autocomplete,
         placeholder: _vm.placeholder,
+        required: "",
       },
       domProps: { value: _vm.countText },
       on: {

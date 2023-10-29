@@ -18,7 +18,7 @@
         </h2>
 
         <div class="p-login__container c-box--form-container">
-            <label for="email" class="p-login__label c-label">メールアドレス:</label>
+            <label for="email" class="p-login__label c-label">*メールアドレス:</label>
             <input id="email" type="text" class="p-login__input c-input @error('email') c-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             @error('email')
                 <p class="c-error--text" role="alert">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="p-login__container c-box--form-container">
-            <label for="password" class="p-login__label c-label">パスワード:</label>
+            <label for="password" class="p-login__label c-label">*パスワード:</label>
             <input id="password" type="password" class="p-login__input c-input @error('password') c-error @enderror" name="password" required autocomplete="current-password" placeholder="半角英数字8文字以上">
             @error('password')
                 <p class="c-error--text" role="alert">

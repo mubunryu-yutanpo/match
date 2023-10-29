@@ -17,7 +17,7 @@
 
         <!-- 案件タイプ -->
         <div class="p-create__container c-box--form-container">
-            <label for="type" class="c-label p-create__label">案件の種類:</label>
+            <label for="type" class="c-label p-create__label">*案件の種類:</label>
                 <select name="type" id="type" class="c-select p-create__select @error('type') c-error @enderror">
 
                     <option value="" hidden>選択してください</option>
@@ -37,7 +37,7 @@
 
         <!-- 案件名 -->
         <div class="p-create__container c-box--form-container">
-            <label for="title" class="c-label p-create__label">タイトル:</label>
+            <label for="title" class="c-label p-create__label">*タイトル:</label>
                 <input id="title" type="text" class="c-input p-create__input @error('title') c-error @enderror" name="title" value="{{ old('title', $user->title) }}" required autocomplete="title" autofocus>
                 @error('title')
                     <p class="c-error c-error--text p-create__error-text" role="alert">
@@ -51,7 +51,7 @@
 
             <!-- 料金（上限） -->
             <div class="p-create__container c-box--form-container">
-                <label for="upperPrice" class="c-label p-create__label">料金の上限:</label>
+                <label for="upperPrice" class="c-label p-create__label">*料金の上限:</label>
                     <input id="upperPrice" type="number" class="c-input p-create__input @error('upperPrice') c-error @enderror" name="upperPrice" value="{{ old('upperPrice') }}" autofocus placeholder="〜99999（単位：千円）">
                     @error('upperPrice')
                         <p class="c-error c-error--text p-create__error-text" role="alert">
@@ -62,7 +62,7 @@
 
             <!-- 料金（下限） -->
             <div class="p-create__container c-box--form-container">
-                <label for="lowerPrice" class="c-label p-create__label">料金の下限:</label>
+                <label for="lowerPrice" class="c-label p-create__label">*料金の下限:</label>
                     <input id="lowerPrice" type="number" class="c-input p-create__input @error('lowerPrice') c-error @enderror" name="lowerPrice" value="{{ old('lowerPrice') }}" autofocus placeholder="1〜（単位：千円）">
                     @error('lowerPrice')
                         <p class="c-error c-error--text p-create__error-text" role="alert">

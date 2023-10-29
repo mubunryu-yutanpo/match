@@ -18,7 +18,7 @@
 
         <!-- ユーザー名 -->
         <div class="p-profile__container c-box--form-container">
-            <label for="name" class="c-label p-profile__label">名前:</label>
+            <label for="name" class="c-label p-profile__label">*名前:</label>
                 <input id="name" type="text" class="c-input p-profile__input @error('name') valid-error @enderror" name="name" value="{{ old('name', $user->name) }}" required autocomplete="name" autofocus>
                 @error('name')
                     <span class="c-error c-error--text p-profile__error-text" role="alert">
@@ -29,7 +29,7 @@
 
         <!-- メールアドレス -->
         <div class="p-profile__container c-box--form-container">
-            <label for="email" class="c-label p-profile__label">メールアドレス:</label>
+            <label for="email" class="c-label p-profile__label">*メールアドレス:</label>
                 <input id="email" type="email" class="c-input p-profile__input @error('email') valid-error @enderror" name="email" value="{{ old('email', $user->email) }}" required autocomplete="email" autofocus>
                 @error('email')
                     <span class="c-error c-error--text p-profile__error-text" role="alert">

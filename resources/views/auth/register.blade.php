@@ -18,7 +18,7 @@
         </h2>
 
         <div class="p-register__container c-box--form-container">
-            <label for="name" class="p-register__label c-label">名前:</label>
+            <label for="name" class="p-register__label c-label">*名前:</label>
             <input id="name" type="text" class="p-register__input c-input @error('name') c-error @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="20文字以内">
             @error('name')
                 <p class="c-error--text" role="alert">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="p-register__container c-box--form-container">
-            <label for="email" class="p-register__label c-label">メールアドレス:</label>
+            <label for="email" class="p-register__label c-label">*メールアドレス:</label>
             <input id="email" type="email" class="p-register__input c-input @error('email') c-error @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             @error('email')
                 <p class="c-error--text" role="alert">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="p-register__container c-box--form-container">
-            <label for="password" class="p-register__label c-label">パスワード:</label>
+            <label for="password" class="p-register__label c-label">*パスワード:</label>
             <input id="password" type="password" class="p-register__input c-input @error('password') c-error @enderror" name="password" required autocomplete="current-password" placeholder="半角英数字8文字以上">
             @error('password')
                 <p class="c-error--text" role="alert">
@@ -48,7 +48,7 @@
         </div>
 
         <div class="p-register__container c-box--form-container">
-            <label for="password-confirm" class="p-register__label c-label">パスワード（再入力）:</label>
+            <label for="password-confirm" class="p-register__label c-label">*パスワード（再入力）:</label>
             <input id="password-confirm" type="password" class="p-register__input c-input @error('password-confirm') c-error @enderror" name="password_confirmation" required autocomplete="new-password" placeholder="半角英数字8文字以上">
             @error('password-confirm')
                 <p class="c-error--text" role="alert">
